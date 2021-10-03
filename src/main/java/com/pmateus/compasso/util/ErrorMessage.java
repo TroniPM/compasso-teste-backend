@@ -33,9 +33,16 @@ public class ErrorMessage implements Serializable {
         this.message = message;
     }
 
-    public static ErrorMessage notValidData() {
+    public static ErrorMessage notValidData(String txt) {
         ErrorMessage error = new ErrorMessage();
         error.setStatusCode(HttpStatus.BAD_REQUEST.value());
+        error.setMessage(txt);
+
+        return error;
+    }
+
+    public static ErrorMessage notValidData() {
+        ErrorMessage error = notValidData("");
         error.setMessage("Dados inválidos.");
 
         return error;

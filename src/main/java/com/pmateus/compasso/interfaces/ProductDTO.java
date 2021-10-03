@@ -5,23 +5,25 @@
  */
 package com.pmateus.compasso.interfaces;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 /**
  *
  * @author Paulo Mateus
  */
 public class ProductDTO {
 
+    @NotBlank(message = "Nome é obrigatório")
     private String name;
 
+    @NotBlank(message = "Descrição é obrigatória")
     private String description;
 
+    @NotNull(message = "Preço é obrigatório")
+    @Min(value = 0, message = "Valor deve ser maior que ou igual a 0")
     private Double price;
-
-    public boolean isValid() {
-        return this.name == null || this.name.isEmpty()
-                || this.description == null || this.description.isEmpty()
-                || this.price == null || this.price.longValue() < 0;
-    }
 
     public String getName() {
         return name;

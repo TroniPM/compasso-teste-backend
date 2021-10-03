@@ -39,10 +39,6 @@ public class Product implements Serializable {
     private Double price;
 
     public static Product parse(ProductDTO item) {
-        if (item == null || item.isValid()) {
-            return null;
-        }
-
         Product p = new Product();
         p.setName(item.getName());
         p.setDescription(item.getDescription());
